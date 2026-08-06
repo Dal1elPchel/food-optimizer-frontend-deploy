@@ -1,0 +1,187 @@
+.filtersAdditionalInfo {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+}
+
+.filtersTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  font-weight: var(--weight-bold);
+  font-size: var(--text-lg);
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: var(--color-main-text);
+    transform: translateY(-2px);
+  }
+
+  span {
+    color: var(--color-option-text);
+    transition: 0.15s ease-in-out;
+  }
+}
+
+.filtersProgressBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin: auto;
+}
+
+.filtersProgressGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filtersProgressLabel {
+  color: var(--color-option-text);
+  font-weight: var(--weight-bold);
+  transition: 0.15s ease-in-out;
+}
+
+.filtersProgressLabelActive {
+  color: var(--color-main-text);
+}
+
+.filtersProgressDivider {
+  color: var(--color-option-text);
+}
+
+.filtersMain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.filterContent {
+  order: 1;
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.prevFilterButton {
+  order: 2;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-control-bg);
+  color: var(--color-control-bg);
+  border-radius: 50%;
+  transition: 0.15s ease-in-out;
+
+  svg {
+    width: 60%;
+    height: 60%;
+    font-weight: lighter;
+    color: inherit;
+  }
+
+  &:hover,
+  &:active {
+    border-color: var(--color-main-text);
+    transform: scale(1.15);
+    color: var(--color-main-text);
+  }
+}
+
+.filtersNextButton {
+  order: 3;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background-color: var(--color-green-lighter);
+  border-radius: var(--radius-small);
+  color: var(--color-main-text);
+  transition: 0.15s ease-in-out;
+
+  &:hover,
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+.errorBox {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: max-content;
+  max-width: 90%;
+  margin: 15px auto;
+  padding: 16px 24px;
+  background-color: var(--color-error-text);
+  border: 1px solid var(--color-error-text);
+  border-radius: var(--radius-small);
+  opacity: 0.7;
+  color: var(--color-main-text);
+  font-size: var(--text-md);
+
+  button {
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    transition: 0.15s ease-in-out;
+
+    &:active {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .filtersAdditionalInfo {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 350px;
+  }
+
+  .filtersProgressBar {
+    margin: 0;
+  }
+
+  .filtersMain {
+    justify-content: center;
+    gap: 80px;
+    margin: 30px auto;
+    max-width: 900px;
+  }
+
+  .filterContent {
+    order: initial;
+    flex: 1 1 320px;
+    max-width: 480px;
+  }
+
+  .prevFilterButton {
+    order: initial;
+    width: 75px;
+    height: 75px;
+  }
+
+  .filtersNextButton {
+    order: initial;
+    width: 170px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
