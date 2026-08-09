@@ -6,27 +6,6 @@
   justify-content: flex-start;
 }
 
-.filtersTitle {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
-  font-weight: var(--weight-bold);
-  font-size: var(--text-lg);
-  cursor: pointer;
-
-  &:hover,
-  &:active {
-    color: var(--color-main-text);
-    transform: translateY(-2px);
-  }
-
-  span {
-    color: var(--color-option-text);
-    transition: 0.15s ease-in-out;
-  }
-}
-
 .filtersProgressBar {
   display: flex;
   flex-direction: row;

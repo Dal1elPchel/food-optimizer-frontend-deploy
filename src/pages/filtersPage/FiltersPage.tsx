@@ -10,6 +10,7 @@ import { Category, OptimizeMode } from '@/features/searchFilters/model/SearchFil
 import BudgetSection from '@/features/searchFilters/ui/BudgetSection.js';
 import LocationSection from '@/features/searchFilters/ui/LocationSection.js';
 import PreferenceSection from '@/features/searchFilters/ui/PreferenceSection.js';
+import BackBtn from '@/shared/UI/backBtn/backBtn';
 
 import styles from './FiltersPage.module.scss';
 
@@ -160,12 +161,7 @@ const FiltersPage = () => {
                 </div>
             )}
             <div className={styles.filtersAdditionalInfo}>
-                <h1 className={styles.filtersTitle} onClick={() => navigate(-1)}>
-                    <span>
-                        <ArrowLeft />
-                    </span>
-                    Настройте фильтры
-                </h1>
+                <BackBtn title="Настройте фильтры" />
 
                 <div className={styles.filtersProgressBar}>
                     {FILTER_ORDER.map((key, index) => (
