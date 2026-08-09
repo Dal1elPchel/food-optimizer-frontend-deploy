@@ -112,6 +112,12 @@ const PreferenceSection = ({ generalPreferences }: PreferenceProps) => {
                                             type="checkbox"
                                             checked={excludedCategories.value.includes(item)}
                                             onChange={() => excludedCategories.setValue(item)}
+                                            disabled={
+                                                chosenCategories.value.includes(item) ||
+                                                (excludedCategories.value.length ===
+                                                    categories.length - 1 &&
+                                                    !excludedCategories.value.includes(item))
+                                            }
                                         />
                                         <span>{item}</span>
                                     </label>

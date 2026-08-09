@@ -83,6 +83,11 @@
             background-color: var(--color-main-green);
             border-color: var(--color-main-green);
         }
+
+        &:disabled + span {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
     }
 
     span {
@@ -274,12 +279,18 @@
 
 .peopleCount {
     display: grid;
+    width: 80%;
 
     grid-template-columns: 20% 1fr 20%;
 
-    margin: 0 30px;
+    margin: 0 auto;
 
     color: var(--color-main-text);
+    padding: 10px;
+
+    background-color: var(--color-bg);
+
+    border-radius: var(--radius-medium);
 
     button {
         display: flex;
@@ -300,18 +311,23 @@
         transition: 0.15s ease-in-out;
         cursor: pointer;
 
-        &:hover {
+        &:hover:not(:disabled) {
             background-color: var(--color-main-green);
             color: var(--color-main-text);
 
             transform: scale(1.13);
         }
 
-        &:active {
+        &:active:not(:disabled) {
             background-color: var(--color-main-green);
             color: var(--color-main-text);
 
             transform: scale(1.13);
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
     }
 
@@ -320,12 +336,6 @@
 
         align-items: center;
         justify-content: center;
-
-        padding: 10px 0;
-
-        background-color: var(--color-bg);
-
-        border-radius: var(--radius-medium);
     }
 }
 

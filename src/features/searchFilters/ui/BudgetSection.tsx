@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 import styles from '../styles/Filters.module.scss';
 
 interface Field<T> {
@@ -12,6 +14,52 @@ interface BudgetProps {
 }
 
 const BudgetSection = ({ budget, personCount, count }: BudgetProps) => {
+    const intervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const personCountRef = useRef(personCount.value);
+    const countRef = useRef(count.value);
+
+    useEffect(() => {
+        personCountRef.current = personCount.value;
+    }, [personCount.value]);
+
+    useEffect(() => {
+        countRef.current = count.value;
+    }, [count.value]);
+
+    const onChangeNumberData = (
+        field: React.MutableRefObject<number>,
+        change: (value: number) => void,
+        limitNumber: number,
+        direction: 'increase' | 'decrease',
+    ) => {
+        const current = field.current;
+        if (direction === 'increase') {
+            change(Math.min(limitNumber, current + 1));
+        } else if (direction === 'decrease') {
+            change(Math.max(limitNumber, current - 1));
+        }
+    };
+
+    const startHold = (
+        field: React.MutableRefObject<number>,
+        change: (value: number) => void,
+        limitNumber: number,
+        direction: 'increase' | 'decrease',
+    ) => {
+        const tick = () => {
+            onChangeNumberData(field, change, limitNumber, direction);
+            intervalRef.current = setTimeout(tick, 200);
+        };
+        intervalRef.current = setTimeout(tick, 50);
+    };
+
+    const stopHold = () => {
+        if (intervalRef.current) {
+            clearTimeout(intervalRef.current);
+            intervalRef.current = null;
+        }
+    };
+
     return (
         <section className={styles.filterSection}>
             <div>
@@ -46,9 +94,17 @@ const BudgetSection = ({ budget, personCount, count }: BudgetProps) => {
 
                 <div className={styles.peopleCount}>
                     <button
-                        onClick={() => {
-                            personCount.change(Math.max(1, personCount.value - 1));
+                        disabled={personCount.value === 1}
+                        onMouseDown={() => {
+                            startHold(personCountRef, personCount.change, 1, 'decrease');
                         }}
+                        onMouseUp={stopHold}
+                        onMouseLeave={stopHold}
+                        onTouchStart={() => {
+                            startHold(personCountRef, personCount.change, 1, 'decrease');
+                        }}
+                        onTouchEnd={stopHold}
+                        onTouchCancel={stopHold}
                     >
                         -
                     </button>
@@ -56,23 +112,40 @@ const BudgetSection = ({ budget, personCount, count }: BudgetProps) => {
                     <span>{personCount.value}</span>
 
                     <button
-                        onClick={() => {
-                            personCount.change(Math.min(20, personCount.value + 1));
+                        disabled={personCount.value === 20}
+                        onMouseDown={() => {
+                            startHold(personCountRef, personCount.change, 20, 'increase');
                         }}
+                        onMouseUp={stopHold}
+                        onMouseLeave={stopHold}
+
+                        onTouchStart={() => {
+                            startHold(personCountRef, personCount.change, 20, 'increase');
+                        }}
+                        onTouchEnd={stopHold}
+                        onTouchCancel={stopHold}
                     >
                         +
                     </button>
                 </div>
 
                 <label className={styles.filterLabel}>
-                    6. количество вариантов (необязательно):
+                    6. количество вариантов заказа (необязательно):
                 </label>
 
                 <div className={styles.peopleCount}>
                     <button
-                        onClick={() => {
-                            count.change(Math.max(1, count.value - 1));
+                        disabled={count.value === 1}
+                        onMouseDown={() => {
+                            startHold(countRef, count.change, 1, 'decrease');
                         }}
+                        onMouseUp={stopHold}
+                        onMouseLeave={stopHold}
+                        onTouchStart={() => {
+                            startHold(countRef, count.change, 1, 'decrease');
+                        }}
+                        onTouchEnd={stopHold}
+                        onTouchCancel={stopHold}
                     >
                         -
                     </button>
@@ -80,9 +153,17 @@ const BudgetSection = ({ budget, personCount, count }: BudgetProps) => {
                     <span>{count.value}</span>
 
                     <button
-                        onClick={() => {
-                            count.change(Math.min(20, count.value + 1));
+                        disabled={count.value === 20}
+                        onMouseDown={() => {
+                            startHold(countRef, count.change, 20, 'increase');
                         }}
+                        onMouseUp={stopHold}
+                        onMouseLeave={stopHold}
+                        onTouchStart={() => {
+                            startHold(countRef, count.change, 20, 'increase');
+                        }}
+                        onTouchEnd={stopHold}
+                        onTouchCancel={stopHold}
                     >
                         +
                     </button>
