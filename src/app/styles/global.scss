@@ -78,6 +78,7 @@ button {
     color: inherit;
     font: inherit;
     cursor: pointer;
+    user-select: none;
 }
 
 input,
@@ -85,6 +86,15 @@ textarea,
 select {
     font: inherit;
     color: inherit;
+    outline: none;
+}
+
+button:active,
+input:focus,
+textarea:active,
+select:active {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 img,
