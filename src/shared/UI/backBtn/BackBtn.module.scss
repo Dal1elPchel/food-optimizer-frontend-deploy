@@ -1,0 +1,17 @@
+.filtersTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  font-weight: var(--weight-bold);
+  font-size: var(--text-lg);
+  cursor: pointer;
+  transition: .2s ease-in-out;
+  color: var(--color-option-text);
+
+  &:hover,
+  &:active {
+    color: var(--color-main-text);
+    transform: translateY(-2px);
+  }
+}
