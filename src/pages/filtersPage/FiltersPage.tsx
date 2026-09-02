@@ -10,6 +10,7 @@ import { Category, OptimizeMode } from '@/features/searchFilters/model/SearchFil
 import BudgetSection from '@/features/searchFilters/ui/BudgetSection.js';
 import LocationSection from '@/features/searchFilters/ui/LocationSection.js';
 import PreferenceSection from '@/features/searchFilters/ui/PreferenceSection.js';
+import useWindowWidth from '@/shared/lib/hooks/useWindowWidth';
 import BackBtn from '@/shared/UI/backBtn/backBtn';
 
 import styles from './FiltersPage.module.scss';
@@ -34,6 +35,7 @@ interface Preference {
 
 const FiltersPage = () => {
     const navigate = useNavigate();
+    const width = useWindowWidth();
 
     const [currentFilter, setCurrentFilter] = useState<FilterKey>('location');
     const [isErrorDismissed, setIsErrorDismissed] = useState<boolean>(false);
@@ -161,24 +163,63 @@ const FiltersPage = () => {
                 </div>
             )}
             <div className={styles.filtersAdditionalInfo}>
-                <BackBtn title="Настройте фильтры" />
-
-                <div className={styles.filtersProgressBar}>
-                    {FILTER_ORDER.map((key, index) => (
-                        <span key={key} className={styles.filtersProgressGroup}>
-                            <span
-                                className={`${styles.filtersProgressLabel} ${
-                                    currentFilter === key ? styles.filtersProgressLabelActive : ''
-                                }`}
-                            >
-                                {FILTER_LABELS[key]}
-                            </span>
-                            {index < FILTER_ORDER.length - 1 && (
-                                <span className={styles.filtersProgressDivider}>&mdash;</span>
-                            )}
-                        </span>
-                    ))}
-                </div>
+                {width > 800 ? (
+                    <>
+                        <BackBtn title="Назад на главную" />
+                        <div className={styles.filtersAdditionalSub}>
+                            <h1>Настройте фильтры</h1>
+                            <div className={styles.filtersProgressBar}>
+                                {FILTER_ORDER.map((key, index) => (
+                                    <span key={key} className={styles.filtersProgressGroup}>
+                                        <span
+                                            data-index={index + 1}
+                                            className={`${styles.filtersProgressLabel} ${
+                                                currentFilter === key
+                                                    ? styles.filtersProgressLabelActive
+                                                    : ''
+                                            }`}
+                                        >
+                                            {FILTER_LABELS[key]}
+                                        </span>
+                                        {index < FILTER_ORDER.length - 1 && (
+                                            <span className={styles.filtersProgressDivider}>
+                                                &mdash;
+                                            </span>
+                                        )}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div>
+                            <BackBtn title="Назад на главную" />
+                            <h1>Настройте фильтры</h1>
+                        </div>
+                        <div className={styles.filtersProgressBar}>
+                            {FILTER_ORDER.map((key, index) => (
+                                <span key={key} className={styles.filtersProgressGroup}>
+                                    <span
+                                        data-index={index + 1}
+                                        className={`${styles.filtersProgressLabel} ${
+                                            currentFilter === key
+                                                ? styles.filtersProgressLabelActive
+                                                : ''
+                                        }`}
+                                    >
+                                        {FILTER_LABELS[key]}
+                                    </span>
+                                    {index < FILTER_ORDER.length - 1 && (
+                                        <span className={styles.filtersProgressDivider}>
+                                            &mdash;
+                                        </span>
+                                    )}
+                                </span>
+                            ))}
+                        </div>
+                    </>
+                )}
             </div>
 
             <div className={styles.filtersMain}>
