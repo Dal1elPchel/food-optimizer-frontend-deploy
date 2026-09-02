@@ -1,0 +1,50 @@
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  margin: 12px;
+}
+
+.AdditionalInfo {
+  display: grid;
+  grid-template-areas:
+        "back title"
+        "control control";
+  align-items: center;
+
+  .backBtn {
+    grid-area: back;
+  }
+
+  h1 {
+    grid-area: title;
+  }
+
+  .variantCounts {
+    grid-area: control;
+    color: var(--color-option-text);
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-large);
+    padding: 4px 17px;
+    margin: 12px auto;
+  }
+}
+
+
+
+@media (min-width: 1100px) {
+  .mainSection {
+    margin: 0 350px;
+  }
+
+  .AdditionalInfo {
+    display: grid;
+    grid-template-areas:
+        "back back"
+        "title control";
+    justify-content: space-between;
+  }
+
+  .variantCounts {
+    margin: 0;
+  }
+}
