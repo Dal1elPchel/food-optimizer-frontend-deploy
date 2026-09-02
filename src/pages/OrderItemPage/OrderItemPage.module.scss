@@ -1,0 +1,48 @@
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  margin: 12px;
+}
+
+.AdditionalInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    margin: 0 20px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1100px) {
+  .mainSection {
+    margin: 0 350px;
+  }
+
+  .AdditionalInfo {
+    display: grid;
+    grid-template-areas:
+        "back like"
+        "title title";
+
+    .backBtn {
+      grid-area: back;
+    }
+
+    h1 {
+      grid-area: title;
+      text-align: left;
+    }
+
+    .likeBtnContainer {
+      grid-area: like;
+      padding: 4px 17px;
+      margin: 12px auto;
+    }
+  }
+
+  .likeBtnContainer {
+    margin: 0;
+  }
+}
