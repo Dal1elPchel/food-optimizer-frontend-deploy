@@ -1,0 +1,17 @@
+.likeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--color-option-text);
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+  transition: .15s ease-in-out;
+  &:hover {
+    transform: scale(1.15);
+  }
+}
