@@ -2,16 +2,15 @@ import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useThemeStore } from '@/shared/lib/theme/useThemeStore';
+
 import Logo from '../../../shared/assets/icons/Logo.png';
 import styles from './Header.module.scss';
 
-interface HeaderProps {
-    isDarkTheme: boolean;
-    onThemeToggle: () => void;
-}
-
-const Header = ({ isDarkTheme, onThemeToggle }: HeaderProps) => {
+const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const theme = useThemeStore((s) => s.currentTheme);
+    const onThemeToggle = useThemeStore((s) => s.toggleTheme);
 
     const closeMobileMenu = () => {
         setIsMobileMenuOpen(false);
@@ -60,7 +59,7 @@ const Header = ({ isDarkTheme, onThemeToggle }: HeaderProps) => {
 
                     aria-label="Изменить тему"
                 >
-                    {isDarkTheme ? <Sun /> : <Moon />}
+                    {theme === 'dark' ? <Sun /> : <Moon />}
                 </button>
             </div>
         </header>
