@@ -1,17 +1,33 @@
 /* ---------------- COLORS ---------------- */
+:root, [data-theme="dark"] {
+  --color-bg: #0f1117;
+  --color-card-bg: #1a1d26;
+  --color-control-bg: #242938;
+  --color-main-green: #22c55e;
+  --color-green-hover: #16a34a;
+  --color-green-lighter: #4ade80;
+  --color-main-text: #f3f4f6;
+  --color-option-text: #9ca3af;
+  --color-disabled-text: #6b7280;
+  --color-rating: #f59e0b;
+  --color-error-text: #f44336;
+}
+
+[data-theme="light"] {
+  --color-bg: #f7f8fa;
+  --color-card-bg: #ffffff;
+  --color-control-bg: #eef0f4;
+  --color-main-green: #16a34a;
+  --color-green-hover: #15803d;
+  --color-green-lighter: #22c55e;
+  --color-main-text: #16181d;
+  --color-option-text: #6b7280;
+  --color-disabled-text: #9ca3af;
+  --color-rating: #b45309;
+  --color-error-text: #dc2626;
+}
+
 :root {
-    /* ---------------- COLORS ---------------- */
-    --color-bg: #0f1117;
-    --color-card-bg: #1a1d26;
-    --color-control-bg: #242938;
-    --color-main-green: #22c55e;
-    --color-green-hover: #16a34a;
-    --color-green-lighter: #4ade80;
-    --color-main-text: #f3f4f6;
-    --color-option-text: #9ca3af;
-    --color-disabled-text: #6b7280;
-    --color-rating: #f59e0b;
-    --color-error-text: #f44336;
 
     /* ---------------- FONTS ---------------- */
     --font-main: 'Inter', sans-serif;
