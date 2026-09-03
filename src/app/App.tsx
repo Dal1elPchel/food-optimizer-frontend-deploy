@@ -11,16 +11,11 @@ import Header from '@/widgets/Header/ui/Header.js';
 const queryClient = new QueryClient();
 
 function App() {
-    const [isDarkTheme, setDarkTheme] = useState(true);
-
     return (
         <>
             <QueryClientProvider client={queryClient}>
                 <BrowserRouter>
-                    <Header
-                        isDarkTheme={isDarkTheme}
-                        onThemeToggle={() => setDarkTheme((prev) => !prev)}
-                    />
+                    <Header />
 
                     <Routes>
                         <Route path="/" element={<MainPage />} />
