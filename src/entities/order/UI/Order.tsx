@@ -17,7 +17,9 @@ const OrderComponent = ({ isCurrentOrder, orderInfo, onClick }: OrderProps) => {
 
     return (
         <div
-            onClick={() => onClick(orderInfo.id)}
+            onClick={() => {
+                onClick(orderInfo.id);
+            }}
             className={`${styles.orderCard} ${isCurrentOrder ? styles.activeCard : ''}`}
         >
             <div className={`${styles.orderNumber} ${isCurrentOrder ? styles.activeNumber : ''}`}>
@@ -28,7 +30,10 @@ const OrderComponent = ({ isCurrentOrder, orderInfo, onClick }: OrderProps) => {
                 <p>Каллорийность: {orderInfo.totalCalories}</p>
             </div>
             {width > 1100 && <div className={styles.totalPrice}>{orderInfo.totalPrice} $</div>}
-            <LikeBtn />
+
+            <span className={styles.likeBtnContainer}>
+                <LikeBtn />
+            </span>
             {width < 1100 && <div className={styles.totalPrice}>{orderInfo.totalPrice} $</div>}
         </div>
     );
