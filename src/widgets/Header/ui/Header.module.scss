@@ -19,16 +19,20 @@
 
 .headerLogo {
     img {
+        box-sizing: content-box;
         object-fit: contain;
 
         width: auto;
         height: 40px;
 
         transition: 0.2s ease-in-out;
+        border-radius: var(--radius-small);
+        padding: 10px;
     }
 
     &:hover img {
-        transform: scale(1.1);
+        transform: translateY(-5px);
+        background-color: var(--color-card-bg);
     }
 
     &:active img {
@@ -94,6 +98,7 @@
     background-color: var(--color-card-bg);
 
     border-bottom: 1px solid var(--color-bg);
+  cursor: pointer;
 
     a {
         display: inline-block;
@@ -124,6 +129,16 @@
     border: 1px solid var(--color-option-text);
 
     border-radius: 18px;
+    transition: 0.15s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-main-green);
+
+      svg {
+        color: var(--color-main-green);
+      }
+    }
 
     &:active {
         transform: scale(0.9);
