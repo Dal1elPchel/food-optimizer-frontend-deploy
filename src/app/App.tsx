@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import FiltersPage from '@/pages/filtersPage/FiltersPage.js';
 import MainPage from '@/pages/mainPage/MainPage.js';
-import OrderItemPage from '@/pages/OrderItemPage/OrderItemPage';
+import OrderItemPage from '@/pages/orderItemPage/OrderItemPage';
 import OrderPage from '@/pages/orderPage/OrderPage';
 import Header from '@/widgets/Header/ui/Header.js';
 
