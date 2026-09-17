@@ -5,7 +5,12 @@ class httpClient {
         const response = await fetch(`${this.#BASE_URL}${endPoint}${init ? '?' + init : ''}`);
 
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+            switch (response.status) {
+                case 500:
+                case 501:
+                case 502:
+                    throw new Error('Не удалось загрузить данные... Попробуйте позже.');
+            }
         }
 
         return (await response.json()) as Promise<T>;

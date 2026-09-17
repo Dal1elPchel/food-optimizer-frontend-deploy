@@ -35,7 +35,7 @@ const LocationSection = ({
                 <select
                     id="citySelect"
                     className={styles.filterSelect}
-                    disabled={citiesLoad}
+                    disabled={citiesLoad && !error}
                     value={city.value}
                     onChange={(e) => {
                         city.setValue(e.target.value);

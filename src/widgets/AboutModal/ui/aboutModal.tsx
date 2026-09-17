@@ -2,7 +2,7 @@ import { Code2, Gauge, Wallet } from 'lucide-react';
 
 import { Modal } from '@/shared/UI/modal/modal';
 
-import styles from './AboutModal.module.scss';
+import styles from './aboutModal.module.scss';
 
 interface AboutModalProps {
     isOpen: boolean;
